@@ -1,0 +1,53 @@
+% Student data
+student(1, 'Ali', 'Zia', 'Computer Science').
+student(2, 'Brite', 'Javed', 'Computer Science').
+student(3, 'Surf', 'Xcel', 'programing Fundamentals').
+student(4, 'Diana', 'Brown', 'Math').
+student(5, 'Eve', 'Jones', 'Science').
+student(6, 'Devil', 'Taqi', 'Accounting').
+student(7, 'Jack', 'Taylor', 'Communiction skills').
+student(8, 'Ahmed', 'White', 'Physics').
+student(9, 'Ishaq', 'Johnson', 'Ics').
+student(10, 'Masooom', 'Moneer', 'Computer Science').
+
+% Course data
+course(1, 'Computer Science').
+course(3, 'Programming Fundamentals').
+course(7, 'Communication Skills').
+course(5, 'Science').
+course(4, 'Math').
+course(2, 'Computer Science').
+course(10, 'Computer Science').
+course(8, 'Physics').
+course(9, 'Ics').
+course(6, 'Accounting').
+
+
+
+
+% Enrollment data
+enroll(1, 1).
+enroll(2, 1).
+enroll(3, 1).
+enroll(4, 1).
+enroll(5, 1).
+enroll(6, 2).
+enroll(7, 2).
+enroll(8, 2).
+enroll(9, 3).
+enroll(10, 3).
+
+% Rules for retrieving student data
+get_student_first_name(StudentID, FirstName) :-
+  student(StudentID, FirstName, _, _).
+get_student_last_name(StudentID, LastName) :-
+  student(StudentID, _, LastName, _).
+get_student_major(StudentID, Major) :-
+  student(StudentID, _, _, Major).
+
+% Rules for retrieving course data
+get_course_name(CourseID, CourseName) :-
+  course(CourseID, CourseName).
+% Rules for retrieving enrollment data
+get_enrolled_courses(StudentID, _):-
+ findall(CourseID, enroll(StudentID, CourseID), _).
